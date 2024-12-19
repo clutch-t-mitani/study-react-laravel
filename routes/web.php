@@ -37,8 +37,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/books', [BookController::class, 'index'])->name('book.index');
     Route::post('/books/store', [BookController::class, 'store'])->name('book.store');
-    Route::put('/books/update/{book}', [BookController::class, 'update'])->name('book.update');
-    Route::delete('/books/destroy/{book}', [BookController::class, 'destroy'])->name('book.destroy');
+    Route::put('/books/update/{id}', [BookController::class, 'update'])->name('book.update');
+    Route::delete('/books/destroy/{id}', [BookController::class, 'destroy'])->name('book.destroy');
 });
 
 require __DIR__.'/auth.php';

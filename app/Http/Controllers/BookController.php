@@ -32,8 +32,9 @@ class BookController extends Controller
             'category' => 'required|max:10',
         ]);
 
-        $book = new Books($request->input());
-        $book->save();
+        // $book = new Book($request->input());
+        // $book->save();
+        Book::create($request->input());
 
         return redirect('books')->with([
             'message' => '登録しました',
@@ -42,9 +43,11 @@ class BookController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @param $id
      */
-    public function update(Request $request, Books $book)
+    public function update(Request $request,  int $id)
     {
+        $book = Book::find($id);
         $book->fill($request->input())->saveOrFail();
 
         return redirect('books')->with([
@@ -54,9 +57,11 @@ class BookController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * @param $id
      */
-    public function destroy(Books $book)
+    public function destroy(int $id)
     {
+        $book = Book::find($id);
         $book->delete();
 
         return redirect('books')->with([
