@@ -15,7 +15,7 @@ import TextareaInput from '@/Components/TextareaInput';
 import Select from '@/Components/Select';
 
 export default function Dashboard({ auth,books,message }) {
-    const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
+    const [confirmingBookCreate, setConfirmingBookCreate] = useState(false);
     const [confirmingBookUpdate, setConfirmingBookUpdate] = useState(false);
     const passwordInput = useRef();
     const titleInput = useRef();
@@ -35,7 +35,7 @@ export default function Dashboard({ auth,books,message }) {
     });
 
     const confirmUserDeletion = () => {
-        setConfirmingUserDeletion(true);
+        setConfirmingBookCreate(true);
     };
 
     const confirmBookUpdate = (id, title, content, category, book) => {
@@ -43,7 +43,7 @@ export default function Dashboard({ auth,books,message }) {
         setConfirmingBookUpdate(true);
     };
 
-    const deleteUser = (e) => {
+    const createBook = (e) => {
         e.preventDefault();
 
         post(route('book.store'), {
@@ -73,7 +73,7 @@ export default function Dashboard({ auth,books,message }) {
     };
 
     const closeModal = () => {
-        setConfirmingUserDeletion(false);
+        setConfirmingBookCreate(false);
 
         reset();
     };
@@ -95,8 +95,8 @@ export default function Dashboard({ auth,books,message }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <BlueButton onClick={confirmUserDeletion}>登録</BlueButton>
 
-                    <Modal show={confirmingUserDeletion} onClose={closeModal}>
-                        <form onSubmit={deleteUser} className="p-6">
+                    <Modal show={confirmingBookCreate} onClose={closeModal}>
+                        <form onSubmit={createBook} className="p-6">
                             <h2 className="text-lg font-medium text-gray-900">
                                 新規登録
                             </h2>

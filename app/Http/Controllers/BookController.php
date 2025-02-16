@@ -32,8 +32,6 @@ class BookController extends Controller
             'category' => 'required|max:10',
         ]);
 
-        // $book = new Book($request->input());
-        // $book->save();
         Book::create($request->input());
 
         return redirect('books')->with([
