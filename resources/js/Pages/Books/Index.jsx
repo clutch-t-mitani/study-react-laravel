@@ -84,6 +84,8 @@ export default function Dashboard({ auth,books,message }) {
         reset();
     };
 
+    console.count('レンダリング')
+
     return (
         <AuthenticatedLayout
             user={auth.user}

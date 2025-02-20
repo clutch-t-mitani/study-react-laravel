@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/books/store', [BookController::class, 'store'])->name('book.store');
     Route::put('/books/update/{id}', [BookController::class, 'update'])->name('book.update');
     Route::delete('/books/destroy/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+
+    Route::get('/todos', [TodoController::class, 'index'])->name('todo.index');
+    Route::post('/todos', [TodoController::class, 'store'])->name('todo.store');
+
 });
 
 require __DIR__.'/auth.php';
